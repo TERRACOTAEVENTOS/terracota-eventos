@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramo de novia | Terracota Eventos</title>
+    <link rel="icon" type="image/png" href="IMG/TC LOGO.png">
+    <link rel="stylesheet" href="producto-ramo.css?v=2">
+    <link rel="stylesheet" href="styles.css">
+    <script src="producto-ramo.js" defer></script>
+</head>
+<body>
+
+    <!-- Menú Superior -->
+    <header class="sitio-header">
+        <div class="contenedor-menu">
+
+            <button
+                class="menu-toggle"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="menu-navegacion"
+                type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="menu-principal" id="menu-navegacion">
+                <ul>
+                    <li><a href="index.html">INICIO</a></li>
+                    <li><a href="index.html#eventos">EVENTOS</a></li>
+                    <li><a href="ramosdenovia.html">GALERÍA RAMOS</a></li>
+                </ul>
+            </nav>
+
+            <div class="logo-centro">
+                <a href="index.html">TERRACOTA EVENTOS</a>
+            </div>
+
+            <div class="menu-derecha-vacio"></div>
+
+        </div>
+    </header>
+
+    <!-- DETALLE DEL RAMO -->
+    <main class="detalle-ramo">
+
+        <!-- GALERÍA DE FOTOGRAFÍAS -->
+        <section class="galeria-ramo">
+            <div class="marco-foto-ramo">
+                <img id="fotoPrincipal" src="" alt="Ramo de novia Terracota">
+            </div>
+
+            <div id="miniaturasRamo" class="miniaturas-ramo"></div>
+        </section>
+
+        <!-- INFORMACIÓN DEL RAMO -->
+        <section class="info-ramo">
+            <p class="etiqueta-ramo">TERRACOTA EVENTOS</p>
+
+            <h1 id="nombreRamo">Ramo de novia</h1>
+
+            <div class="linea-ramo"></div>
+
+            <p id="descripcionRamo" class="descripcion-ramo"></p>
+
+            <p class="nota-ramo">
+                Consulta disponibilidad y detalles de tu ramo con nuestro equipo.
+            </p>
+
+            <div class="acciones-ramo">
+                <a id="whatsappAgs" href="#" target="_blank"
+                   rel="noopener noreferrer">
+                    Consultar en Aguascalientes
+                </a>
+
+                <a id="whatsappLeon" href="#" target="_blank"
+                   rel="noopener noreferrer">
+                    Consultar en León
+                </a>
+            </div>
+
+            <a class="volver-catalogo" href="ramosdenovia.html">
+                ← Volver a los ramos de novia
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="sitio-footer">
+        <div class="contenedor-footer">
+
+            <div class="footer-columna contacto-sucursales">
+                <h4 class="footer-titulo">CONTÁCTANOS</h4>
+                <p class="footer-subtitulo">
+                    Selecciona la sucursal que deseas contactar:
+                </p>
+
+                <div class="sucursales-info">
+
+                    <div class="sucursal">
+                        <h5>AGUASCALIENTES</h5>
+                        <p><strong>Dirección:</strong> Montes Himalaya 903, Jardines de la Concepción II.</p>
+                        <p><strong>Teléfono:</strong> 449 993 2035</p>
+                        <p><strong>WhatsApp:</strong> 449 363 9750</p>
+                    </div>
+
+                    <div class="sucursal">
+                        <h5>LEÓN, GTO.</h5>
+                        <p><strong>Dirección:</strong> Farallón 203, Jardines del Moral.</p>
+                        <p><strong>Teléfono:</strong> 477 849 4417</p>
+                        <p><strong>WhatsApp:</strong> 477 849 4417</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="footer-columna redes-sociales">
+                <h4 class="footer-titulo">SÍGUENOS</h4>
+
+                <div class="iconos-redes">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                        <img src="IMG/facebook.png" alt="Facebook" class="icon-img">
+                    </a>
+
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <img src="IMG/instagram.png" alt="Instagram" class="icon-img">
+                    </a>
+
+                    <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+                        <img src="IMG/tiktok.png" alt="TikTok" class="icon-img">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-base">
+            <p>&copy; 2026, Terracota la Florería — Eventos</p>
+        </div>
+    </footer>
+
+    <!-- Funcionalidad del menú hamburguesa -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('.sitio-header');
+        const boton = document.querySelector('.menu-toggle');
+        const enlaces = document.querySelectorAll('.menu-principal a');
+
+        if (!header || !boton) return;
+
+        boton.addEventListener('click', function() {
+            const abierto = header.classList.toggle('menu-abierto');
+
+            boton.setAttribute('aria-expanded', abierto);
+            boton.setAttribute(
+                'aria-label',
+                abierto ? 'Cerrar menú' : 'Abrir menú'
+            );
+        });
+
+        enlaces.forEach(function(enlace) {
+            enlace.addEventListener('click', function() {
+                header.classList.remove('menu-abierto');
+                boton.setAttribute('aria-expanded', 'false');
+                boton.setAttribute('aria-label', 'Abrir menú');
+            });
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                header.classList.remove('menu-abierto');
+                boton.setAttribute('aria-expanded', 'false');
+                boton.setAttribute('aria-label', 'Abrir menú');
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>
