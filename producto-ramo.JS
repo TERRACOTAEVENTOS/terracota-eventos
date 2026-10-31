@@ -1,288 +1,201 @@
+document.addEventListener('DOMContentLoaded', function () {
+    'use strict';
 
-/* ======================================
-   DETALLE DE RAMO — TERRACOTA EVENTOS
-   Estilo visual del index
-====================================== */
+    // Fotografías existentes en IMG/RAMOS DE NOVIA.
+    // Se conserva el nombre exacto de cada archivo (incluidas mayúsculas y espacios).
+    const carpeta = 'IMG/RAMOS DE NOVIA/';
 
-/* CONTENEDOR PRINCIPAL */
+    const ramos = {
+        // Catálogo, página 1
+        bruna: {
+            nombre: 'Ramo Bruna',
+            imagenes: ['RAMOBRUNA1.png', 'RAMOBRUNA2.png', 'RAMOBRUNA3.png']
+        },
+        amara: {
+            nombre: 'Ramo Amara',
+            imagenes: ['RAMO AMARA.png', 'RAMOAMARA2.png', 'RAMOAMARA3.png']
+        },
+        cascada: {
+            nombre: 'Ramo Cascada Celynn',
+            imagenes: ['ramocascada.png', 'ramocascada2.png', 'ramocascada3.png']
+        },
+        lelia: {
+            nombre: 'Ramo Lelia',
+            imagenes: ['ramolelia.png', 'ramolelia2.png']
+        },
+        iris: {
+            nombre: 'Ramo Iris',
+            imagenes: ['RAMOIRIS.png', 'RAMOIRIS2.png', 'RAMOIRIS3.png']
+        },
+        veronica: {
+            nombre: 'Ramo Verónica',
+            imagenes: ['RAMOVERONICA.png', 'RAMOVERONICA2.png', 'RAMOVERONICA3.png']
+        },
+        ofelia: {
+            nombre: 'Ramo Ofelia',
+            imagenes: ['RAMOOFELIA.png', 'RAMOOFELIA2.png', 'RAMOOFELIA3.png']
+        },
+        lisia: {
+            nombre: 'Ramo Lisia',
+            imagenes: ['RAMOLISIA.png', 'RAMOLISIA2.png', 'RAMOLISIA3.png']
+        },
+        lina: {
+            nombre: 'Ramo Lina',
+            imagenes: ['RAMOLINA.png', 'RAMOLINA2.png', 'RAMOLINA3.png']
+        },
+        evelina: {
+            nombre: 'Ramo Evelina',
+            imagenes: ['RAMOEVELINA.png', 'RAMOEVELINA2.png', 'RAMOEVELINA3.png']
+        },
+        celina: {
+            nombre: 'Ramo Celina',
+            imagenes: ['RAMOCELINA.png', 'RAMOCELINA2.png', 'RAMOCELINA3.png']
+        },
+        tuli: {
+            nombre: 'Ramo Tuli',
+            imagenes: ['RAMOTULI.png']
+        },
 
-.detalle-ramo {
-    width: min(1120px, calc(100% - 60px));
-    margin: 40px auto 80px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.85fr);
-    gap: 65px;
-    align-items: start;
-    color: #333333;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-}
+        // Catálogo, página 2
+        eva: {
+            nombre: 'Ramo Bolso Eva',
+            imagenes: ['BOLSAEVA.jpg', 'BOLSAEVA2.jpg', 'RAMOEVA3.jpg']
+        },
+        lucia: {
+            nombre: 'Ramo Lucía',
+            imagenes: ['RAMOLUCIA.png', 'RAMOLUCIA2.png', 'RAMOLUCIA3.png']
+        },
+        aurora: {
+            nombre: 'Ramo Aurora',
+            imagenes: ['RAMOAURORA.png', 'RAMOAURORA2.png', 'RAMOAURORA3.png']
+        },
+        cala: {
+            nombre: 'Ramo Cala',
+            imagenes: ['RAMOCALA.jpg', 'RAMOCALA2.jpg', 'RAMOCALA3.jpg']
+        },
+        liora: {
+            nombre: 'Ramo Liora',
+            imagenes: ['RAMOLIORA.png', 'RAMOLIORA2.png', 'RAMOLIORA3.png']
+        },
+        ramo: {
+            nombre: 'Ramo',
+            imagenes: ['RAMO2.png', 'RAMO3.png']
+        },
+        camelia: {
+            nombre: 'Ramo Camelia',
+            imagenes: ['RAMOCAMELIA.png', 'RAMOCAMELIA2.png', 'RAMOCAMELIA3.png']
+        },
+        chiara: {
+            nombre: 'Ramo Chiara',
+            imagenes: ['RAMOCHIARA.png', 'RAMOCHIARA2.png', 'RAMOCHIARA3.png']
+        },
+        elena: {
+            nombre: 'Ramo Elena',
+            imagenes: ['RAMOELENA.png', 'RAMOELENA2.png', 'RAMOELENA3.png']
+        },
+        olivia: {
+            nombre: 'Ramo Olivia',
+            imagenes: ['RAMOOLIVIA.png']
+        },
+        alina: {
+            nombre: 'Ramo Alina',
+            imagenes: ['RAAMOALINA.png', 'RAMOALINA2.png']
+        },
+        charlotte: {
+            nombre: 'Ramo Charlotte',
+            imagenes: ['RAMOCHARLOTTE.png']
+        }
+    };
 
-/* GALERÍA */
+    const parametros = new URLSearchParams(window.location.search);
+    const claveRamo = (parametros.get('ramo') || '').toLowerCase();
+    const ramoSeleccionado = ramos[claveRamo];
 
-.galeria-ramo {
-    min-width: 0;
-    max-width: 520px;
-    width: 100%;
-    justify-self: end;
-}
+    const fotoPrincipal = document.getElementById('fotoPrincipal');
+    const miniaturas = document.getElementById('miniaturasRamo');
+    const nombreRamo = document.getElementById('nombreRamo');
+    const descripcionRamo = document.getElementById('descripcionRamo');
+    const whatsappAgs = document.getElementById('whatsappAgs');
+    const whatsappLeon = document.getElementById('whatsappLeon');
 
-.marco-foto-ramo {
-    width: 100%;
-    height: auto;
-    background: #f8f7f4;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.marco-foto-ramo #fotoPrincipal {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: none;
-    max-height: none;
-    object-fit: contain;
-    object-position: center;
-    margin: 0;
-    background: transparent;
-}
-
-/* MINIATURAS */
-
-.miniaturas-ramo {
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 15px;
-}
-
-.miniaturas-ramo button {
-    width: 65px;
-    height: 75px;
-    padding: 0;
-    border: 1px solid #e7e2da;
-    background: #fff;
-    overflow: hidden;
-    cursor: pointer;
-    transition: border-color .25s ease;
-}
-
-.miniaturas-ramo button:hover,
-.miniaturas-ramo button:focus-visible {
-    border-color: #a99d88;
-}
-
-.miniaturas-ramo img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background: transparent;
-}
-
-/* INFORMACIÓN DEL RAMO */
-
-.info-ramo {
-    padding-top: 5px;
-    min-width: 0;
-    max-width: 440px;
-    width: 100%;
-    justify-self: start;
-}
-
-.etiqueta-ramo {
-    margin: 0 0 12px;
-    color: #918573;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 2.5px;
-}
-
-.info-ramo #nombreRamo {
-    margin: 0 0 15px;
-    color: #333333;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    font-size: clamp(27px, 2.5vw, 35px);
-    text-transform: uppercase;
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: 1px;
-}
-
-.linea-ramo {
-    width: 45px;
-    height: 1px;
-    background: #cdc6b5;
-    margin: 20px 0;
-}
-
-.info-ramo .descripcion-ramo {
-    margin: 0;
-    color: #55514b;
-    font-size: 14px;
-    line-height: 1.8;
-    font-weight: 400;
-}
-
-.nota-ramo {
-    margin: 22px 0 25px;
-    padding-top: 16px;
-    border-top: 1px solid #e9e5de;
-    color: #81796e;
-    font-size: 12px;
-    line-height: 1.8;
-}
-
-/* BOTONES DE WHATSAPP */
-
-.acciones-ramo {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
-}
-
-.acciones-ramo a {
-    box-sizing: border-box;
-    display: flex;
-    width: 100%;
-    max-width: 340px;
-    min-height: 48px;
-    align-items: center;
-    justify-content: center;
-    padding: 13px 18px;
-    border: 1px solid #cdc6b5;
-    background: #ffffff;
-    color: #333333;
-    text-align: center;
-    text-decoration: none;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 1.2px;
-    transition: background .25s ease, color .25s ease, border-color .25s ease;
-}
-
-.acciones-ramo a:hover {
-    background: #cdc6b5;
-    border-color: #cdc6b5;
-    color: #ffffff;
-}
-
-/* VOLVER AL CATÁLOGO */
-
-.volver-catalogo {
-    display: inline-block;
-    margin-top: 28px;
-    color: #777168;
-    font-size: 11px;
-    letter-spacing: .7px;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 5px;
-    transition: border-color .25s ease, color .25s ease;
-}
-
-.volver-catalogo:hover {
-    color: #333333;
-    border-bottom-color: #cdc6b5;
-}
-
-/* TABLET */
-
-@media (max-width: 900px) {
-    .detalle-ramo {
-        width: min(calc(100% - 48px), 720px);
-        grid-template-columns: 1fr;
-        gap: 35px;
-        margin-top: 30px;
+    // Comprobar que el HTML tenga los elementos necesarios.
+    if (!fotoPrincipal || !miniaturas || !nombreRamo || !descripcionRamo) {
+        console.error('Faltan elementos de la galería en producto-ramo.html.');
+        return;
     }
 
-    .galeria-ramo,
-    .info-ramo {
-        max-width: 100%;
-        width: 100%;
+    if (!ramoSeleccionado) {
+        nombreRamo.textContent = 'Ramo no encontrado';
+        descripcionRamo.textContent = 'Regresa al catálogo para seleccionar un ramo disponible.';
+        fotoPrincipal.removeAttribute('src');
+        fotoPrincipal.alt = 'Ramo no disponible';
+        miniaturas.innerHTML = '';
+        if (whatsappAgs) whatsappAgs.style.display = 'none';
+        if (whatsappLeon) whatsappLeon.style.display = 'none';
+        return;
     }
 
-    .galeria-ramo {
-        justify-self: center;
+    nombreRamo.textContent = ramoSeleccionado.nombre;
+    descripcionRamo.textContent = 'Consulta con nuestro equipo la disponibilidad de este diseño floral y las opciones para tu evento.';
+
+    function mostrarImagen(ruta, botonActivo) {
+        fotoPrincipal.src = carpeta + ruta;
+        fotoPrincipal.alt = ramoSeleccionado.nombre;
+        miniaturas.querySelectorAll('button').forEach(function (boton) {
+            boton.classList.remove('activa');
+            boton.setAttribute('aria-pressed', 'false');
+        });
+        if (botonActivo) {
+            botonActivo.classList.add('activa');
+            botonActivo.setAttribute('aria-pressed', 'true');
+        }
     }
 
-    .info-ramo {
-        justify-self: start;
-    }
+    miniaturas.innerHTML = '';
+    ramoSeleccionado.imagenes.forEach(function (archivo, indice) {
+        const boton = document.createElement('button');
+        const miniatura = document.createElement('img');
+        const ruta = carpeta + archivo;
 
-    .acciones-ramo a {
-        max-width: 340px;
-    }
-}
+        boton.type = 'button';
+        boton.className = 'miniatura-ramo';
+        boton.setAttribute('aria-label', 'Ver fotografía ' + (indice + 1) + ' de ' + ramoSeleccionado.nombre);
+        boton.setAttribute('aria-pressed', indice === 0 ? 'true' : 'false');
 
-/* MÓVIL */
+        miniatura.src = ruta;
+        miniatura.alt = 'Vista ' + (indice + 1) + ' de ' + ramoSeleccionado.nombre;
+        miniatura.loading = 'lazy';
 
-@media (max-width: 650px) {
-    .detalle-ramo {
-        width: calc(100% - 36px);
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        margin: 20px auto 60px;
-    }
+        // Si una fotografía no existe, no dejamos una miniatura rota.
+        miniatura.addEventListener('error', function () {
+            boton.remove();
+            console.error('No se encontró la imagen: ' + ruta);
+        }, { once: true });
 
-    .galeria-ramo,
-    .info-ramo {
-        width: 100%;
-        max-width: 100%;
-    }
+        boton.appendChild(miniatura);
+        boton.addEventListener('click', function () {
+            mostrarImagen(archivo, boton);
+        });
+        miniaturas.appendChild(boton);
 
-    .marco-foto-ramo {
-        height: auto;
-    }
+        if (indice === 0) {
+            mostrarImagen(archivo, boton);
+        }
+    });
 
-    .miniaturas-ramo {
-        gap: 8px;
-        margin-top: 12px;
-    }
+    fotoPrincipal.addEventListener('error', function () {
+        console.error('No se pudo cargar la fotografía principal:', fotoPrincipal.src);
+    }, { once: true });
 
-    .miniaturas-ramo button {
-        width: 62px;
-        height: 72px;
-    }
+    const mensaje = encodeURIComponent(
+        'Hola, quisiera consultar información y disponibilidad del ' +
+        ramoSeleccionado.nombre + ' para mi evento.'
+    );
 
-    .info-ramo {
-        padding-top: 0;
+    if (whatsappAgs) {
+        whatsappAgs.href = 'https://wa.me/524493639750?text=' + mensaje;
     }
-
-    .etiqueta-ramo {
-        margin-bottom: 12px;
-        font-size: 9px;
+    if (whatsappLeon) {
+        whatsappLeon.href = 'https://wa.me/524778494417?text=' + mensaje;
     }
-
-    .info-ramo #nombreRamo {
-        font-size: 27px;
-    }
-
-    .linea-ramo {
-        margin: 20px 0;
-    }
-
-    .info-ramo .descripcion-ramo {
-        font-size: 13px;
-        line-height: 1.9;
-    }
-
-    .nota-ramo {
-        margin: 20px 0;
-        padding-top: 15px;
-    }
-
-    .acciones-ramo a {
-        max-width: 100%;
-        min-height: 47px;
-        font-size: 10px;
-    }
-
-    .volver-catalogo {
-        margin-top: 25px;
-    }
-}
+});
