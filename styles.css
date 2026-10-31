@@ -584,3 +584,108 @@ body {
 .paginacion-shopify .pagina-flecha:hover {
     color: #CDC6B5 !important;
 }
+
+/* ======================================================================
+   PIE DE PÁGINA RESPONSIVE — AJUSTE PARA TABLET Y CELULAR
+   Mantiene la apariencia original en escritorio.
+   ====================================================================== */
+@media (max-width: 768px) {
+    .sitio-footer {
+        margin-top: 55px;
+        padding: 42px 26px 18px;
+    }
+
+    .contenedor-footer {
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 34px;
+    }
+
+    .contacto-sucursales,
+    .redes-sociales {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .footer-titulo {
+        font-size: 12px;
+        letter-spacing: 2.2px;
+        margin-bottom: 12px;
+    }
+
+    .footer-subtitulo {
+        font-size: 13px;
+        line-height: 1.5;
+        margin: 0 0 20px;
+    }
+
+    .sucursales-info {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+    }
+
+    .sucursal {
+        padding: 18px 0;
+        border-top: 1px solid rgba(205, 198, 181, 0.75);
+    }
+
+    .sucursal:first-child {
+        padding-top: 4px;
+        border-top: 0;
+    }
+
+    .sucursal h5 {
+        font-size: 14px;
+        letter-spacing: 1.5px;
+        margin-bottom: 10px;
+    }
+
+    .sucursal p {
+        font-size: 12px;
+        line-height: 1.65;
+        margin: 5px 0;
+        overflow-wrap: anywhere;
+    }
+
+    .redes-sociales {
+        padding-top: 23px;
+        border-top: 1px solid rgba(205, 198, 181, 0.75);
+    }
+
+    .iconos-redes {
+        gap: 22px;
+        margin-top: 15px;
+    }
+
+    .icon-img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .footer-base {
+        margin-top: 30px;
+        padding-top: 16px;
+        text-align: center;
+    }
+
+    .footer-base p {
+        font-size: 10px;
+        line-height: 1.5;
+        letter-spacing: 0.6px;
+        margin: 0;
+    }
+}
+
+@media (max-width: 420px) {
+    .sitio-footer {
+        padding: 36px 20px 16px;
+    }
+
+    .contenedor-footer {
+        gap: 28px;
+    }
+
+    .sucursal p {
+        font-size: 11.5px;
+    }
+}
