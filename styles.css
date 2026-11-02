@@ -431,9 +431,9 @@ body {
     }
 
     .rejilla-ramos {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 25px 12px !important;
-        padding: 0 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 30px 15px !important;
+        padding: 0 15px;
     }
 
     .rejilla-ramos .contenedor-foto {
@@ -443,8 +443,8 @@ body {
     }
 
     .nombre-evento-catalogo {
-        font-size: 10px;
-        letter-spacing: 0.8px;
+        font-size: 11px;
+        letter-spacing: 1.2px;
     }
 
     .seccion-portafolio {
